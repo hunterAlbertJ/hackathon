@@ -34,25 +34,60 @@ var popup = L.popup();
 var tempArr = [];
 var soldier = false;
 var armor = false;
-
+var friendly = false;
+var hostile = false;
+var selectedTeam = document.getElementById('currentlySelected');
+var currentEntity = '';
+var entityStatus  = '';
 
 var armorButton = document.getElementById("armorButton");
 armorButton.addEventListener('click', function(){
+    currentEntity = ''
     armor = true;
     soldier = false;
+    currentEntity = 'Armor';
+    selectedTeam.innerText = "Currently Selected: " + entityStatus + currentEntity;
+
     console.log("armor pressed")
 });
 
 var armorButton = document.getElementById("soldierButton");
 armorButton.addEventListener('click', function(){
+    currentEntity = '';
     armor = false;
     soldier = true;
-    console.log("armor pressed")
+    console.log("soldier selected")
+    currentEntity = 'Soldier';
+    selectedTeam.innerText = "Currently Selected: " + entityStatus + currentEntity;
+
+});
+
+
+var armorButton = document.getElementById("friendly");
+armorButton.addEventListener('click', function(){
+    entityStatus  = '';
+    hostile = false;
+    friendly = true;
+    console.log("friendly selected")
+    entityStatus = "Friendly "
+    selectedTeam.innerText = "Currently Selected: " + entityStatus + currentEntity;
+    
+});
+
+
+var armorButton = document.getElementById("hostile");
+armorButton.addEventListener('click', function(){
+    entityStatus  = '';
+    hostile = true;
+    friendly = false;
+    entityStatus = "Hostile "
+    console.log("hostile selected")
+    selectedTeam.innerText = "Currently Selected: " + entityStatus + currentEntity;
 });
 
     function onMapClick(e) {
         
-            if(soldier){
+            if(soldier && hostile){
             popup
             .setLatLng(e.latlng)
             .setContent("Enemy Soldier at  " + e.latlng.toString())
@@ -69,7 +104,24 @@ armorButton.addEventListener('click', function(){
                 radius: 20
             }).addTo(map);
         }
-            if(armor){
+        if(soldier && friendly){
+            popup
+            .setLatLng(e.latlng)
+            .setContent("Friendly Soldier at  " + e.latlng.toString())
+            .openOn(map);
+
+        
+            
+            
+
+            var circle = L.circle(e.latlng, {
+                color: 'blue',
+                fillColor: 'lightblue',
+                fillOpacity: 0.5,
+                radius: 20
+            }).addTo(map);
+        }
+            if(armor && hostile){
             var polygon = L.polygon([
                 [e.latlng.lat, e.latlng.lng],
                 [e.latlng.lat, e.latlng.lng + 0.005],
@@ -81,6 +133,21 @@ armorButton.addEventListener('click', function(){
             popup
             .setLatLng(e.latlng)
             .setContent("Enemy Armor at  " + e.latlng.toString())
+            .openOn(map);
+        }
+
+        if(armor && friendly){
+            var polygon = L.polygon([
+                [e.latlng.lat, e.latlng.lng],
+                [e.latlng.lat, e.latlng.lng + 0.005],
+                [e.latlng.lat + .0025, e.latlng.lng + 0.0025]
+            ],
+            {
+                color: 'blue'
+            }).addTo(map);
+            popup
+            .setLatLng(e.latlng)
+            .setContent("Friendly Armor at  " + e.latlng.toString())
             .openOn(map);
         }
 

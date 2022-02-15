@@ -1,12 +1,26 @@
 #map { 
-    height: 800px; 
+    height:800px; 
     width: 800px;
+    background-color: transparent;
 }
-#selector{
-height: 100px;
-width: 100px;
-background-color: transparent;
+body{
+    background-color: beige;
+    /* display: flex; */
+}
+#buttonBox{
+    padding: 10px;
+background-color: gray;
 display: flex;
 align-items: center;
 justify-content: left;
+width: 800px;
+}
+#friendOrFoe{
+padding: 10px;
+background-color: lightgray;
+display: flex;
+align-items: center;
+justify-content: left;
+width: 800px;
+
 }
