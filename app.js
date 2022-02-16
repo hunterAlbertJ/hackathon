@@ -1,3 +1,6 @@
+
+//why is the long broken...?
+//this is portland but the actual coordinates are 45.5152° N, 122.6784° W
 var map = L.map("map").setView([45.529441, -482.618408], 13);
 L.tileLayer(
   "https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}",
@@ -12,9 +15,6 @@ L.tileLayer(
       "pk.eyJ1Ijoid2lja2VkYWxjaGVtaXN0IiwiYSI6ImNrem9qa21nbDAxbXIycG9hZmlqMzNwNG8ifQ.2PMnoC3eXQrQPfnUYE9pTw",
   }
 ).addTo(map);
-// L.marker([51.5, -0.09]).addTo(map)
-//     .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
-//     .openPopup();
 
 var geojsonFeature = {
   type: "Feature",
@@ -28,7 +28,7 @@ var geojsonFeature = {
     coordinates: [44.134913, -480.60791],
   },
     };
-// L.geoJSON(geojsonFeature).addTo(map);
+
 
 var popup = L.popup();
 var tempArr = [];
@@ -101,7 +101,7 @@ armorButton.addEventListener('click', function(){
                 color: 'red',
                 fillColor: '#f03',
                 fillOpacity: 0.5,
-                radius: 20
+                radius: 10
             }).addTo(map);
         }
         if(soldier && friendly){
@@ -118,14 +118,14 @@ armorButton.addEventListener('click', function(){
                 color: 'blue',
                 fillColor: 'lightblue',
                 fillOpacity: 0.5,
-                radius: 20
+                radius: 10
             }).addTo(map);
         }
             if(armor && hostile){
             var polygon = L.polygon([
                 [e.latlng.lat, e.latlng.lng],
-                [e.latlng.lat, e.latlng.lng + 0.005],
-                [e.latlng.lat + .0025, e.latlng.lng + 0.0025]
+                [e.latlng.lat, e.latlng.lng + 0.0005],
+                [e.latlng.lat + .00025, e.latlng.lng + 0.00025]
             ],
             {
                 color: 'red'
@@ -139,8 +139,8 @@ armorButton.addEventListener('click', function(){
         if(armor && friendly){
             var polygon = L.polygon([
                 [e.latlng.lat, e.latlng.lng],
-                [e.latlng.lat, e.latlng.lng + 0.005],
-                [e.latlng.lat + .0025, e.latlng.lng + 0.0025]
+                [e.latlng.lat, e.latlng.lng + 0.0005],
+                [e.latlng.lat + .00025, e.latlng.lng + 0.00025]
             ],
             {
                 color: 'blue'

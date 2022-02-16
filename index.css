@@ -1,11 +1,8 @@
-#map { 
-    height:800px; 
-    width: 800px;
-    background-color: transparent;
-}
+
 body{
     background-color: beige;
-    /* display: flex; */
+    max-height: fit-content;
+    max-width: fit-content;
 }
 #buttonBox{
     padding: 10px;
@@ -13,7 +10,10 @@ background-color: gray;
 display: flex;
 align-items: center;
 justify-content: left;
-width: 800px;
+width: max-content;
+border-style: solid;
+border: 5px;
+border-color: black;
 }
 #friendOrFoe{
 padding: 10px;
@@ -21,6 +21,29 @@ background-color: lightgray;
 display: flex;
 align-items: center;
 justify-content: left;
-width: 800px;
+width: max-content;
+border-style: solid;
+border: 5px;
+border-color: black;
 
+
+}
+#container{
+    display: flex;
+    
+    justify-content:space-around;
+    align-items:flex-end;
+    border-style: inset;
+    border-color: black;
+    
+    
+}
+#map { 
+    margin:auto;
+    height:90vh; 
+    width:80vw;
+    background-color: transparent;
+    border-radius: 90%;
+    border: 10px;
+    
 }
